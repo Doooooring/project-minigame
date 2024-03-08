@@ -1,5 +1,6 @@
 #include "main.h"
 
+bool is_background_on = false;
 int x, y = 0;
 int block_shape;
 int blockchange;
@@ -285,7 +286,11 @@ void update_background() {
 	drop_block();
 }
 
-void print_background() {
+bool print_background() {
+
+	if (is_cursor_using) return false;
+	is_cursor_using = true;
+
 	for (int i = 0; i < MAPHEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
 			if (map[i + 1][j + 1] != 0) continue;
@@ -295,7 +300,35 @@ void print_background() {
 			else {
 				print_str(1 + i, 1 + j, white);
 			}
-			
+
 		}
 	}
+	is_cursor_using = false;
+	return true;
+}
+
+void start_background() {
+	is_background_on = true;
+}
+
+void stop_background() {
+	is_background_on = false;
+}
+
+void WINAPI background_api() {
+	while (is_background_on) {
+		update_background();
+		while (!print_background()) {
+			Sleep(10);
+		}
+
+		Sleep(100);
+	}
+}
+
+void execute_background() {
+	start_background();
+	int backgroundThreadId;
+	HANDLE backgroundThreadHandle;
+	backgroundThreadHandle = CreateThread(NULL, 0, background_api, NULL, 0, &backgroundThreadId);
 }

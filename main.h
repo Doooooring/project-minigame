@@ -106,6 +106,9 @@ typedef enum INPUT {
 #define black "¡à"
 #define white "¡á"
 
+// cursor resource °ü¸®
+bool is_cursor_using;
+
 page_step cur_step;
 int speed;
 int cur_game;
@@ -159,4 +162,7 @@ void initialize_setting();
 
 // background.c
 void update_background();
-void print_background();
+bool print_background();
+void execute_background();
+void start_background();
+void stop_background();
