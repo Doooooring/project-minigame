@@ -6,8 +6,7 @@ int page_game_select() {
 		4, game_select_step, GAME_SELECT_PAGE_TITLE, game_select_menus, game_select_page_menu_select
 	);
 
-	initialize_game_select_page_map();
-
+	initialize_page_map(page_game_select_menu);
 	execute_background();
 	execute_menu(page_game_select_menu);
 

@@ -6,8 +6,7 @@ int page_difficulty() {
 		4, difficult_select_step, DIFFICULTY_PAGE_TITLE, difficulty_menus, difficulty_page_menu_select
 	);
 
-	initialize_difficulty_page_map();
-
+	initialize_page_map(page_difficulty_menu);
 	execute_background();
 	execute_menu(page_difficulty_menu);
 

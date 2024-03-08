@@ -129,3 +129,24 @@ void execute_menu(menu* cur_menu) {
 		Sleep(50);
 	}
 }
+
+void initialize_page_map(menu* cur_menu) {
+	int title_len = strlen(cur_menu->title);
+	int title_start_y = (WIDTH - title_len) / 2;
+
+	for (int i = 0; i < title_len + 1; i++) {
+		map[TITLE_X][title_start_y + i] = 1;
+	}
+
+	int menu_start_x = (MAPHEIGHT - 2 * cur_menu->menu_cnt) / 2;
+	int menu_start_y = (WIDTH - 16) / 2;
+
+	for (int i = 0; i < cur_menu->menu_cnt; i++) {
+		char cur_str_len = strlen((cur_menu->menus)[i]);
+
+		for (int j = 0; j < cur_str_len + 1; j++) {
+			map[menu_start_x + 2 * i][menu_start_y + j] = 1;
+		}
+	}
+
+}

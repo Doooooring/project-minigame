@@ -14,6 +14,7 @@ typedef struct {
 #define __menu_define 1
 #endif
 
+void initialize_page_map(menu* cur_menu);
 void execute_menu(menu* cur_menu);
 menu* new_Menu(
 	int menu_cnt,

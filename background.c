@@ -316,12 +316,12 @@ void stop_background() {
 }
 
 void WINAPI background_api() {
+	Sleep(50);
 	while (is_background_on) {
 		update_background();
 		while (!print_background()) {
 			Sleep(10);
 		}
-
 		Sleep(100);
 	}
 }
