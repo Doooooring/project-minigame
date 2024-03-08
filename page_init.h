@@ -1,13 +1,10 @@
-#include "main.h"
+#pragma once
+#include "menu_module.h"
+#define INIT_PAGE_TITLE "DAOU MINI GAME"
 
-bool get_user_menu_input();
+extern char* init_menus[3];
 
-void init_cur_menu_selected();
-void menu_select_up();
-void menu_select_down();
-void menu_move_step();
+void init_page_menu_select(int cur_menu_selected);
+void initialize_init_page_map();
 
-void print_menu();
-void print_init_title();
-
-void set_init_page_map();
+menu* page_init_menu;

@@ -1,25 +1,15 @@
-#include "main.h"
 #include "page_init.h"
 
 int page_init() {
 
-	init_cur_menu_selected();
-	set_init_page_map();
-	print_init_title();
+	menu* page_init_menu = new_Menu(
+		3, init_step, INIT_PAGE_TITLE, init_menus, init_page_menu_select
+	);
 
-	while (1) {
+	initialize_init_page_map();
 
-		update_background();
-		print_background();
-		print_menu();
+	execute_background();
+	execute_menu(page_init_menu);
 
-		if (_kbhit()) {
-			get_user_menu_input();
-			continue;
-		}
-		
-		Sleep(75);
-
-		if (cur_step != init_step) break;
-	}
+	stop_background();
 }

@@ -1,13 +1,10 @@
-#include "main.h"
+#pragma once
+#include "menu_module.h"
+#define DIFFICULTY_PAGE_TITLE "Difficulty"
 
-void difficulty_select_up();
-void difficulty_select_down();
+extern char* difficulty_menus[];
 
-void difficulty_move_step();
+void difficulty_page_menu_select(int cur_menu_selected);
+void initialize_difficulty_page_map();
 
-void set_difficulty_page();
-
-void print_difficulties();
-void print_difficulty_title();
-
-bool get_user_difficulty_input();
+menu* page_difficulty_menu;

@@ -1,7 +1,10 @@
-#include "main.h"
+#pragma once
+#include "menu_module.h"
+#define GAME_SELECT_PAGE_TITLE "Select Game"
 
-void print_game_menu();
-bool get_user_game_input();
+extern char* game_select_menus[];
 
-void print_game_title();
-void set_init_game_select();
+void game_select_page_menu_select(int cur_menu_selected);
+void initialize_game_select_page_map();
+
+menu* page_game_select_menu;

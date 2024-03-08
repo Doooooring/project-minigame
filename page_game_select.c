@@ -1,24 +1,17 @@
-#include "main.h"
 #include "page_game_select.h"
 
 int page_game_select() {
 
-	set_init_game_select();
-	print_game_title();
+	menu* page_game_select_menu = new_Menu(
+		4, game_select_step, GAME_SELECT_PAGE_TITLE, game_select_menus, game_select_page_menu_select
+	);
 
-	while (1) {
+	initialize_game_select_page_map();
 
-		update_background(); // 백그라운드 업데이트
-		print_background(); // 백그라운드 그리기
-		print_game_menu(); // 실제 컨텐츠 그리기
+	execute_background();
+	execute_menu(page_game_select_menu);
 
-		if (_kbhit()) {
-			get_user_game_input(); // 유저 입력 받기
-			continue;
-		}
-		Sleep(50);
+	stop_background();
 
-
-		if (cur_step != game_select_step) break; // 스텝 유효성 확인
-	}
+	return 0;
 }

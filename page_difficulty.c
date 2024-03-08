@@ -1,24 +1,17 @@
-#include "main.h"
 #include "page_difficulty.h"
 
 int page_difficulty() {
 
-	set_difficulty_page();
-	print_difficulty_title();
+	menu* page_difficulty_menu = new_Menu(
+		4, difficult_select_step, DIFFICULTY_PAGE_TITLE, difficulty_menus, difficulty_page_menu_select
+	);
 
-	while (1) {
+	initialize_difficulty_page_map();
 
-		update_background();
-		print_background();
-		print_difficulties();
+	execute_background();
+	execute_menu(page_difficulty_menu);
 
-		if (_kbhit()) {
-			get_user_difficulty_input();
-			continue;
-		}
+	stop_background();
 
-		Sleep(50);
-
-		if (cur_step != difficult_select_step) break;
-	}
+	return 0;
 }
