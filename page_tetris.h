@@ -14,6 +14,7 @@ int blockNum;
 //블록 조종
 int next_block[4][2];
 int block[4][2];
+
 clock_t start_time, end_time;
 
 int mem_for_move[4][2];

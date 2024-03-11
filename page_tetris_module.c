@@ -4,6 +4,9 @@
 //회전 가능성 체크 및 이동용 블록
 int test_block[4][2];
 
+// 블록 가이드
+int block_guide[4][2];
+
 //Step3
 
 //게임 시작
@@ -57,7 +60,7 @@ void move_block() {
 
 //다음 블록 출발 세팅
 void set_for_next_block() {
-	modify(1);
+	modify(-1 * blockNum);
 	num_erased = erase();
 	control_tetris_level(num_erased);
 	control_score(num_erased);
@@ -81,19 +84,19 @@ void reset() {
 	//아래쪽
 	i = TETRISHEIGHT + 1;
 	for (j = 1; j < WIDTH + 2; j++)
-		tetris_map[i][j] = 1;
+		tetris_map[i][j] = -1;
 	//위쪽
 	i = 0;
 	for (j = 0; j < WIDTH + 2; j++)
-		tetris_map[i][j] = 1;
+		tetris_map[i][j] = -1;
 	//왼쪽
 	j = 0;
 	for (i = 0; i < TETRISHEIGHT + 2; i++)
-		tetris_map[i][j] = 1;
+		tetris_map[i][j] = -1;
 	//오른쪽
 	j = WIDTH + 1;
 	for (i = 0; i < TETRISHEIGHT + 2; i++)
-		tetris_map[i][j] = 1;
+		tetris_map[i][j] = -1;
 	//내부
 	for (i = 1; i <= TETRISHEIGHT; i++)
 		for (j = 1; j <= WIDTH; j++)
@@ -222,44 +225,51 @@ void print_next_block(int type) {
 }
 
 //블록 색깔
-void coloring_block(int color) {
+void coloring_block(int prev_color) {
+	
+	int color = prev_color < 0 ? - 1 * prev_color : prev_color;
+
 	switch (color) {
-	case(1):
-		printf("%s", COLOR_CYAN);
-		printf(white);
-		break;
-	case(2):
-		printf("%s", COLOR_YELLOW);
-		printf(white);
-		break;
-	case(3):
-		printf("%s", COLOR_GREEN);
-		printf(white);
-		break;
-	case(4):
-		printf("%s", COLOR_GREEN);
-		printf(white);
-		break;
-	case(5):
-		printf("%s", COLOR_BLUE);
-		printf(white);
-		break;
-	case(6):
-		printf("%s", COLOR_BLUE);
-		printf(white);
-		break;
-	case(7):
-		printf("%s", COLOR_RED);
-		printf(white);
-		break;
-	case(8):
-		printf("%s", COLOR_PURPLE);
-		printf(white);
-		break;
-	default:
-		printf("%s", COLOR_RESET);
-		printf(black);
-		break;
+		case(1):
+			printf("%s", COLOR_WHITE_PASTEL_LIGHT_GREY);
+			printf(" ");
+			break;
+		case(2):
+			printf("%s", COLOR_WHITE_PASTEL_YELLOW);
+			printf(" ");
+			break;
+		case(3):
+			printf("%s", COLOR_WHITE_PASTEL_BLUE);
+			printf(" ");
+			break;
+		case(4):
+			printf("%s", COLOR_WHITE_PASTEL_ORANGE);
+			printf(" ");
+			break;
+		case(5):
+			printf("%s", COLOR_WHITE_PASTEL_CYAN);
+			printf(" ");
+			break;
+		case(6):
+			printf("%s", COLOR_WHITE_PASTEL_GREEN);
+			printf(" ");
+			break;
+		case(7):
+			printf("%s", COLOR_WHITE_PASTEL_PURPLE);
+			printf(" ");
+			break;
+		case(8):
+			printf("%s", COLOR_WHITE_PASTEL_MAGENTA);
+			printf(" ");
+			break;
+		case(9):
+			printf("%s", COLOR_WHITE_DARK_GRAY);
+			printf(" ");
+			break;
+		default:
+			printf("%s", COLOR_RESET);
+			printf(" ");
+			break;
 	}
 }
 
@@ -338,19 +348,19 @@ int check(int type) {
 		//밑 점검
 	case(down):
 		for (i = 0; i < 4; i++)
-			if (tetris_map[(block[i][0] + 1)][(block[i][1])] == 1)
+			if (tetris_map[(block[i][0] + 1)][(block[i][1])] < 0)
 				return false;
 		break;
 		//왼 점검
 	case(left):
 		for (i = 0; i < 4; i++)
-			if (tetris_map[(block[i][0])][(block[i][1] - 1)] == 1)
+			if (tetris_map[(block[i][0])][(block[i][1] - 1)] < 0)
 				return false;
 		break;
 		//오른쪽 점검
 	case(right):
 		for (i = 0; i < 4; i++)
-			if (tetris_map[(block[i][0])][(block[i][1] + 1)] == 1)
+			if (tetris_map[(block[i][0])][(block[i][1] + 1)] < 0)
 				return false;
 		break;
 		//회전 점검
@@ -360,7 +370,7 @@ int check(int type) {
 			test_block[i][1] = block[0][1] - (block[i][0] - block[0][0]);
 		}
 		for (i = 0; i < 4; i++)
-			if (tetris_map[(test_block[i][0])][(test_block[i][1])] == 1)
+			if (tetris_map[(test_block[i][0])][(test_block[i][1])] < 0)
 				return false;
 		break;
 	case(spacebar):
@@ -414,13 +424,57 @@ void move(int type) {
 	}
 }
 
+
+// guide block
+void erase_guide_info() {
+	int h, w;
+	for (i = 0; i < 4; i++) {
+		h = block_guide[i][0], w = block_guide[i][1];
+		tetris_map[h][w] = 0;
+	}
+}
+
+void set_guide_info() {
+	int cnt = 0;
+	while (1) {
+		bool is_pos = true;
+		for (i = 0; i < 4; i++) {
+			if (tetris_map[(block[i][0] + cnt + 1)][(block[i][1])] < 0) {
+				is_pos = false;
+				break;
+			}
+		}
+		if (!is_pos) break;
+		cnt++;
+	}
+
+	for (i = 0; i < 4; i++) {
+		block_guide[i][0] = block[i][0] + cnt;
+		block_guide[i][1] = block[i][1];
+		tetris_map[block_guide[i][0]][(block_guide[i][1])] = 9;
+	}
+
+}
+
+
 //BlOCK 값 조정
 void modify(int change) {
+
+	if (change > 0) {
+		set_guide_info();
+	}
+	else {
+		erase_guide_info();
+	}
+
 	int h, w;
 	for (i = 0; i < 4; i++) {
 		h = block[i][0], w = block[i][1];
 		tetris_map[h][w] = change;
 	}
+
+
+
 }
 
 //블록 제거

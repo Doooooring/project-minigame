@@ -71,7 +71,7 @@ void make_nansu() {
 
 void print_shooting_outline() {
 	print_str_row(1, "SHOOTING GAME");
-	printf("%s", COLOR_WHITE_DARK_GRAY);
+	//printf("%s", COLOR_WHITE_DARK_GRAY);
 	for (i = 0; i < MAPHEIGHT + 2; i++) {
 		print_str(i, 0, white);
 		print_str(i, WIDTH + 1, white);
@@ -84,28 +84,30 @@ void print_shooting_outline() {
 }
 void print_shooting_game(int speed) {
 	int x, y;
+	printf("%s", COLOR_RESET);
 	for (int i = 1; i <= SHOOTINGHEIGHT; i++) {
 		for (int j = 1; j <= WIDTH; j++) {
 			if (shooting_mem[i][j] == total_map[i][j]) continue;
 			switch (total_map[i][j]) {
-			case(0):
-				printf("%s", COLOR_WHITE_DARK_GRAY);
-				print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, blank);
-				break;
-			case(1):
-				printf("%s", COLOR_WHITE_DARK_GRAY);
-				//printf("%s",);
-				print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, monster);
-				break;
-			case(-1):
-				printf("%s", COLOR_YELLOW);
-				print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, attack);
-				break;
-			}
+				case(0):
+					//printf("%s", COLOR_WHITE_DARK_GRAY);
+					print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, blank);
+					break;
+				case(1):
+					//printf("%s", COLOR_WHITE_DARK_GRAY);
+					//printf("%s",);
+					print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, monster);
+					break;
+				case(-1):
+					//printf("%s", COLOR_YELLOW);
+					print_str(MAPHEIGHT - SHOOTINGHEIGHT + i, j, attack);
+					break;
+				}
 			shooting_mem[i][j] = total_map[i][j];
 		}
 	}
-	printf("%s", COLOR_PURPLE);
+
+	//printf("%s", COLOR_PURPLE);
 	print_str(MAPHEIGHT - SHOOTINGHEIGHT + state_h, state_w, "бу");
 	print_str(MAPHEIGHT - SHOOTINGHEIGHT + state_h, state_w - 1, "=");
 	print_str(MAPHEIGHT - SHOOTINGHEIGHT + state_h, state_w + 1, "=");

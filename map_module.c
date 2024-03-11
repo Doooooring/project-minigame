@@ -68,6 +68,7 @@ void erase_line(int x) {
 
 // 전체 지우기
 void erase_all() {
+	printf("%s", COLOR_RESET);
 	system("cls");
 }
 

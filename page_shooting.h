@@ -1,4 +1,4 @@
-#include "main.h"
+ï»¿#include "main.h"
 
 #define SHOOTINGHEIGHT 25
 #define START_H SHOOTINGHEIGHT
@@ -6,7 +6,7 @@
 
 
 #define attack ":"
-#define monster "¡Ý"
+#define monster "â—Ž"
 
 
 int button;

@@ -322,9 +322,12 @@ void print_arr_2048() {
 
 			char cur_color[30];
 			strcpy(cur_color, color_map[color_ind]);
+
 			printf("%s", cur_color);
+
 			int cur_x = INITIAL_X + HEADER_2048 + i * GAP;
 			int cur_y = INITIAL_Y + j * GAP;
+
 			for (int k = 0; k < GAP; k++) {
 				print_str(cur_x, cur_y + k, " ");
 				print_str(cur_x + GAP - 1, cur_y + k, " ");
