@@ -1,4 +1,4 @@
-# Project Mini Game World (
+# Project Mini Game World
 
 ## 개발 환경
 - C
