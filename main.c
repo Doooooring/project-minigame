@@ -35,7 +35,8 @@ int main() {
 				page_ranking();
 				break;		
 		}
-		system("cls");
+	
+		erase_all();
 	}
 
 	return 0;
