@@ -14,4 +14,107 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="2048.txt" />
+    <Text Include="advance.txt" />
+    <Text Include="challenge.txt" />
+    <Text Include="impossible.txt" />
+    <Text Include="rankings.txt" />
+    <Text Include="shooting_file.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="background.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="map_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_2048.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_2048_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_difficulty.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_difficulty_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_game_select.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_game_select_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_init.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_init_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_ranking.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_ranking_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_shooting.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_shooting_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_tetris.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="page_tetris_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="step_module.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_module.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_2048.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_difficulty.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_game_select.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_init.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_ranking.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_shooting.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="page_tetris.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

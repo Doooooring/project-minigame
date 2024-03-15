@@ -3,7 +3,11 @@
 int page_game_select() {
 
 	menu* page_game_select_menu = new_Menu(
-		4, game_select_step, GAME_SELECT_PAGE_TITLE, game_select_menus, game_select_page_menu_select
+		4, 
+		game_select_step, 
+		GAME_SELECT_PAGE_TITLE, 
+		game_select_menus, 
+		game_select_page_menu_select
 	);
 
 	initialize_page_map(page_game_select_menu);
